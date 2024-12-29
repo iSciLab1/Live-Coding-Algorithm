@@ -1,0 +1,48 @@
+# Ignoriere Build-Ordner und temporäre Dateien
+[Dd]ebug/
+[Dd]ebugPublic/
+[Dd]ist/
+[Dd]ist/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+[Aa]rch/
+[Ll]og/
+
+# Ignoriere die User-spezifischen Projektdateien
+.vs/
+.vscode/
+.idea/
+
+# Ignoriere Benutzerdaten
+*.user
+*.userosscache
+*.suo
+*.sdf
+*.db
+
+# Ignoriere Paketmanagement-Dateien (NuGet)
+*.nupkg
+packages/
+
+# Ignoriere .NET Build-Ausgaben
+bin/
+obj/
+
+# Ignoriere Kompilierte Dateien
+*.dll
+*.exe
+*.pdb
+*.idb
+
+# Ignoriere temporäre und Cache-Dateien
+*.log
+*.cache
+*.swp
+
+# Ignoriere macOS-spezifische Dateien
+.DS_Store
+
+# Ignoriere Windows-spezifische Systemdateien
+Thumbs.db
