@@ -13,19 +13,28 @@ using namespace std;
 
 class Complex {
 private:
-    std::complex<double> z1;
-    std::complex<double> z2;
+    double real;
+    double image;
 public:
-    Complex(complex<double> _z1, complex<double> _z2): z1(_z1), z2(_z2){}
-    std::complex<double> addition(){
-        return z1 + z2;
+    Complex(double _real, double _image): real(_real), image(_image){}
+    Complex operator+(const Complex& other) const {
+        return { real + other.real, image + other.image };
     }
+    //void print() const {
+    //    cout << real << " + " << image << "i";
+    //}
+    friend ostream& operator<<(ostream& out, const Complex& c) {
+        out << c.real << " + " << c.image << "i";
+        return out;
+    }
+
 };
 
 int main() {
-    Complex complex(1.0 + 2.0i, 2.0 + 1.0i);
-
-    cout << "Complex: " << complex.addition() << endl;
-    
+    Complex c1(2, 2);
+    Complex c2(1, 1);
+    Complex c3 = c1 + c2;
+    cout << "Summe: " << c3 << endl;
+    //c3.print();
     return 0;
 }
