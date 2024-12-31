@@ -1,37 +1,41 @@
-﻿#include <iostream>
-#include <vector>
-
+﻿#include <vector>
+#include <iostream>
 using namespace std;
 
+int majorityElement(vector<int> nums) {
+    int candidate = -1, count = 0;
 
-vector<vector<int>> genPacTringle(int numOfRow) {
-    vector<vector<int>> tringle;
-    for (int i = 0; i < numOfRow; i++) {
-        vector<int> row(i + 1, 1);
-        for (int j = 1; j < i; j++) {
-            row[j] = tringle[i-1][j-1] + tringle[i-1][j];
+    // Phase 1: Find the candidate
+    for (int num : nums) {
+        if (count == 0) {
+            candidate = num;
+            count = 1;
         }
-        tringle.push_back(row);
+        else if (num == candidate) {
+            count++;
+        }
+        else {
+            count--;
+        }
     }
-    return tringle;
+
+    // Phase 2: Verify the candidate
+    count = 0;
+    for (int num : nums) {
+        if (num == candidate){
+            count++;
+        }
+    }
+
+    if (count > nums.size() / 2) {
+        return candidate;
+    }
+    return -1;
 }
 
 int main() {
-    int numOfRow = 6;
-    vector<vector<int>> tringle = genPacTringle(numOfRow);
-    //for (int i = 0; i < numOfRow; i++) {
-    //    for (int j = 0; j < i+1; j++) {
-    //        cout << tringle[i][j] << ", ";
-    //    }
-    //    cout << endl;
-    //}
-
-    for (auto row: tringle) {
-        for (auto col: row) {
-            cout << col << ", ";
-        }
-        cout << endl;
-    }
+    vector<int> nums = { 2, 1, 3, 3, 1, 1, 3, 2, 1};
+    cout << "Majority Element: " << majorityElement(nums) << endl;
 
     return 0;
 }
