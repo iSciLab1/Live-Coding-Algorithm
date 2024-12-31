@@ -17,13 +17,21 @@ vector<vector<int>> genPacTringle(int numOfRow) {
 }
 
 int main() {
-    int numOfRow = 5;
+    int numOfRow = 6;
     vector<vector<int>> tringle = genPacTringle(numOfRow);
-    for (int i = 0; i < numOfRow; i++) {
-        for (int j = 0; j < i+1; j++) {
-            cout << tringle[i][j] << ", ";
+    //for (int i = 0; i < numOfRow; i++) {
+    //    for (int j = 0; j < i+1; j++) {
+    //        cout << tringle[i][j] << ", ";
+    //    }
+    //    cout << endl;
+    //}
+
+    for (auto row: tringle) {
+        for (auto col: row) {
+            cout << col << ", ";
         }
         cout << endl;
     }
+
     return 0;
 }
