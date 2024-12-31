@@ -1,27 +1,29 @@
 ﻿#include <iostream>
+#include <vector>
+
 using namespace std;
 
-class Shape {
-public:
-    virtual double getArea() = 0;
-    virtual ~Shape() {
-        cout << "Shape destroyed" << endl;
-    }
-};
 
-class Rectangle : public Shape {
-public:
-    ~Rectangle() {
-        cout << "Rectangle destroyed" << endl;
+vector<vector<int>> genPacTringle(int numOfRow) {
+    vector<vector<int>> tringle;
+    for (int i = 0; i < numOfRow; i++) {
+        vector<int> row(i + 1, 1);
+        for (int j = 1; j < i; j++) {
+            row[j] = tringle[i-1][j-1] + tringle[i-1][j];
+        }
+        tringle.push_back(row);
     }
-    double getArea() override {
-        return 0; 
-    }
-};
+    return tringle;
+}
 
 int main() {
-    Shape* rect = new Rectangle();
-    delete rect;
-
+    int numOfRow = 5;
+    vector<vector<int>> tringle = genPacTringle(numOfRow);
+    for (int i = 0; i < numOfRow; i++) {
+        for (int j = 0; j < i+1; j++) {
+            cout << tringle[i][j] << ", ";
+        }
+        cout << endl;
+    }
     return 0;
 }
