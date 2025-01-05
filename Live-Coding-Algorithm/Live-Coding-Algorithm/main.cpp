@@ -19,21 +19,21 @@ void quickSort(vector<int>& array, int low, int high) {
 }
 
 int binarySearch(const vector<int>& array, int target, int left, int right) {
-    if (left > right) {
-        return -1; 
-    }
+    while (left <= right) {
 
-    int mid = left + (right - left) / 2; 
+        int mid = left + (right - left) / 2;
 
-    if (target == array[mid] ) {
-        return mid; 
+        if (array[mid] == target ) {
+            return mid;
+        }
+        else if (array[mid] > target ) {
+            right =  mid -1;
+        }
+        else {
+            left =  mid + 1;
+        }
     }
-    else if ( target < array[mid]) {
-        return binarySearch(array, target, left, mid - 1); 
-    }
-    else {
-        return binarySearch(array, target, mid + 1, right); 
-    }
+    return -1;
 }
 
 int main() {
@@ -45,7 +45,7 @@ int main() {
 
 
     cout << endl;
-    int target = 7;
+    int target = 5;
     int result = binarySearch(array, target, 0, array.size() - 1);
     cout << "Element: " << result << endl;
     return 0;
