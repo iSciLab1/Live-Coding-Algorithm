@@ -19,18 +19,18 @@ void quickSort(vector<int>& array, int low, int high) {
 }
 
 int binarySearch(const vector<int>& array, int target, int left, int right) {
-    while (left <= right) {
+    if (left <= right) {
 
         int mid = left + (right - left) / 2;
 
         if (array[mid] == target ) {
             return mid;
         }
-        else if (array[mid] > target ) {
-            right =  mid -1;
+        else if (array[mid] < target ) {
+            return  binarySearch(array, target, mid + 1, right);
         }
         else {
-            left =  mid + 1;
+            return binarySearch(array, target, left, mid - 1);
         }
     }
     return -1;
